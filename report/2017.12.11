@@ -1,1 +1,4 @@
 1.安装了python、anaconda3和pytorch
+2.了解了一下python2.x与3.x的一些不同之处
+3.学了一些python基本语法并简单的联系了一下
+4.看了pytorch文档的what is pytorch和autograd部分，对于neural network部分的理解遇到一些问题，准备明天查看一下详细介绍
