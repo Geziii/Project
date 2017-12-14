@@ -1,4 +1,4 @@
-学习并用python实现了RC4加密算法，原打算用Java写，但是想到可以练一下python，源码如下：
+学习并用python实现了RC4加密算法（密钥长度可变的流加密算法簇），原打算用Java写，但是想到可以用这个练一下python，源码如下：
 def encryption(inputfile,outputfile):
     Key="12345abcde"
     S=[i for i in range(256)]
