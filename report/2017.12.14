@@ -1,0 +1,32 @@
+学习并用python实现了RC4加密算法，原打算用Java写，但是想到可以练一下python，源码如下：
+def encryption(inputfile,outputfile):
+    Key="12345abcde"
+    S=[i for i in range(256)]
+    T=[]
+    for i in range(256):
+        T.append(ord(Key[i%(len(Key))]))
+    j=0
+    for i in range(256):
+        j=(j+S[i]+T[i])%256
+        S[i],S[j]=S[j],S[i]
+    fr=open(inputfile,"r",encoding='utf-8')
+    read=fr.read()
+    print(read)
+    write=""
+    i=j=0
+    for k in range(len(read)):
+        i=(i+1)%256
+        j=(j+S[i])%256
+        S[i],S[j]=S[j],S[i]
+        t=(S[i]+S[j])%256
+        write+=chr(ord(read[k])^S[t])
+    fw=open(outputfile,"w",encoding='utf-8')
+    fw.write(write)
+    print(write)
+    return
+
+encryption("originaltext.txt","ciphertext.txt")
+encryption("ciphertext.txt","plaintext.txt")
+写的过程中遇到一个问题，即python中没有swap（）函数，查询后得知Python以引用方式管理对象，即可以交换引用，但通常不能交换内存中的对象值。当然也不需要
+这样做。在C++中这种函数用来交换“a和b的值”。在Python中，a和b的值不会发生交换，但位于当前命名空间中的标记（如a和b）是可以交换的。而对象本身是仍然保留。
+所以与其调用一个swap(a, b)，倒不如使用：a,b = b,a。通常python函数不会混淆它们的命名空间，所以它不能像C++的swap(&a, &b)那样进行引用操作
