@@ -1,0 +1,4 @@
+1.昨天没能运行的原因是打开的数据集是str类型，在python2中不区分str和bytes，但在python3中是区分的，所以需要在pickle.load()中加入“encoding='bytes'”，把数据集变为bytes类型
+2.遇到的另一个问题：object of type 'zip' has no len()，经查得知zip()方法在python2中返回的是一个list，但在python3中返回的是一个对象
+3.练习：创建的仅有两层的网络在经历30次迭代后，识别率达到70%左右，峰值是71.11%
+4.试着用自己建立的手写数字图片让网络识别，没识别成功
